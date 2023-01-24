@@ -17,6 +17,17 @@ function makeFooter() {
     body.appendChild(footer);
 }
 
+function makeDiv({id, classNames, textContent, title, dataAttributeName, dataAttributeValue}) {
+    const div = document.createElement('div');
+    id ? div.setAttribute('id', id) : 'doNothing';
+    classNames ? classNames.split(' ').forEach(ele => div.classList.add(ele)) : 'doNothing';
+    textContent ? div.textContent = textContent : 'doNothing';
+    title ? div.setAttribute('title', title) : 'doNothing';
+    dataAttributeName ? div.setAttribute(`data-${dataAttributeName}`, '') : 'doNothing';
+    dataAttributeValue && dataAttributeName ? div.setAttribute(`data-${dataAttributeName}`, dataAttributeValue) : 'doNothing';
+    return div;
+}
+
 function start() {
     makeHeader();
     makeMain();
