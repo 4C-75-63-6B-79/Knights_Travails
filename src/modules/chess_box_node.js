@@ -1,4 +1,4 @@
-export default function ChessBoxNode(x, y, moves, parent) {
+export default function ChessBoxNode(x, y, moves=null, parent=null) {
     this.x = x;
     this.y = y;
     this.moves = moves;
@@ -13,4 +13,8 @@ ChessBoxNode.prototype.equals = function(otherChessBoxNode) {
         return false;
     }
     return true;
+}
+
+ChessBoxNode.prototype.onBoard = function() {
+    return this.x < 8 && this.y < 8;
 }
