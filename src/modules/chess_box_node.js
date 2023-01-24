@@ -1,6 +1,7 @@
-export default function ChessBoxNode(x, y, parent) {
+export default function ChessBoxNode(x, y, moves, parent) {
     this.x = x;
     this.y = y;
+    this.moves = moves;
     this.parent = parent;
 }
 
