@@ -9,12 +9,12 @@ ChessBoxNode.prototype.equals = function(otherChessBoxNode) {
     if(!ChessBoxNode.prototype.isPrototypeOf(otherChessBoxNode)) {
         return false;
     }
-    if(!(this.x === otherChessBoxNode.x && this.y === otherChessBoxNode)) {
+    if(!(this.x === otherChessBoxNode.x && this.y === otherChessBoxNode.y)) {
         return false;
     }
     return true;
 }
 
 ChessBoxNode.prototype.onBoard = function() {
-    return this.x < 8 && this.y < 8;
+    return this.x > -1 && this.x < 8 && this.y > -1 && this.y < 8;
 }
