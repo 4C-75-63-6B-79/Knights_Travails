@@ -45,4 +45,5 @@ const chessBoard = (function() {
     }
 })();
 
-export default chessBoard;
+const {placeKnight: placeKnight, setDestination: setDestination, findPath: findPath} = chessBoard;
+export {placeKnight, setDestination, findPath};
