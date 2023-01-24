@@ -36,7 +36,7 @@ module.exports = {
             title: 'Knight Travails',
             filename: 'index.html',
             template: './src/template.html',
-            // favicon: "./src/assets/images/sun.png",
+            favicon: "./src/assets/images/chess_knight.svg",
         }),
     ],
     optimization: {
