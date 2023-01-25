@@ -39,7 +39,7 @@ function makeButton({id, classNames, textContent, title}) {
 
 function makeTitleDiv() {
     const header = document.querySelector('header');
-    const titleDiv = makeDiv({id: 'title', title: 'Knight Taravils', textContent: 'Knight Taravils'});
+    const titleDiv = makeDiv({id: 'title', title: 'Knight Travails', textContent: 'Knight Travails'});
     header.appendChild(titleDiv);
 }
 
