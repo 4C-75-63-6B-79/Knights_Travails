@@ -28,10 +28,17 @@ function makeDiv({id, classNames, textContent, title, dataAttributeName, dataAtt
     return div;
 }
 
+function makeTitleDiv() {
+    const header = document.querySelector('header');
+    const titleDiv = makeDiv({id: 'title', title: 'Knight Taravils', textContent: 'Knight Taravils'});
+    header.appendChild(titleDiv);
+}
+
 function start() {
     makeHeader();
     makeMain();
     makeFooter();
+    makeTitleDiv();
 }
 
 export  { start }; 
