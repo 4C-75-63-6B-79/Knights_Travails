@@ -28,10 +28,31 @@ function makeDiv({id, classNames, textContent, title, dataAttributeName, dataAtt
     return div;
 }
 
+function makeButton({id, classNames, textContent, title}) {
+    const button = document.createElement('button');
+    button.setAttribute('type', 'button');
+    id ? button.setAttribute('id', id) : 'doNothing';
+    classNames ? classNames.split(' ').forEach(ele => button.classList.add(ele)) : 'doNothing';
+    textContent ? button.textContent = textContent : 'do Nothing';
+    title ? button.setAttribute('title', title) : 'doNothing';
+}
+
 function makeTitleDiv() {
     const header = document.querySelector('header');
     const titleDiv = makeDiv({id: 'title', title: 'Knight Taravils', textContent: 'Knight Taravils'});
     header.appendChild(titleDiv);
+}
+
+function makeControlsDiv() {
+    const main = document.querySelector('main');
+    const controlDiv = make({id: 'contorls'});
+    main.appendChild(controlDiv);
+}
+
+function makeChessBoardDiv() {
+    const main = document.querySelector('main');
+    const chessBoardDiv = make({id: 'chessBoard'});
+    main.appendChild(chessBoardDiv);
 }
 
 function start() {
@@ -39,6 +60,8 @@ function start() {
     makeMain();
     makeFooter();
     makeTitleDiv();
+    makeControlsDiv();
+    makeChessBoardDiv();
 }
 
 export  { start }; 
