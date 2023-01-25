@@ -17,7 +17,7 @@ function makeFooter() {
     body.appendChild(footer);
 }
 
-function makeDiv({id, classNames, textContent, title, dataAttributeName, dataAttributeValue}) {
+function makeDiv({id, classNames, textContent, title, dataAttributeName, dataAttributeValue, callBackFunction}) {
     const div = document.createElement('div');
     id ? div.setAttribute('id', id) : 'doNothing';
     classNames ? classNames.split(' ').forEach(ele => div.classList.add(ele)) : 'doNothing';
@@ -25,6 +25,7 @@ function makeDiv({id, classNames, textContent, title, dataAttributeName, dataAtt
     title ? div.setAttribute('title', title) : 'doNothing';
     dataAttributeName ? div.setAttribute(`data-${dataAttributeName}`, '') : 'doNothing';
     dataAttributeValue && dataAttributeName ? div.setAttribute(`data-${dataAttributeName}`, dataAttributeValue) : 'doNothing';
+    callBackFunction ? div.addEventListener('click', callBackFunction) : 'doNothing';
     return div;
 }
 
@@ -65,6 +66,10 @@ function makeChessBoardDiv() {
     main.appendChild(chessBoardDiv);
 }
 
+function chessBoardBoxClicked(event) {
+    console.log(event.target);
+}
+
 function makeChessBoardBoxDiv() {
     const chessBoardDiv = document.getElementById('chessBoard');
     for(let i=0; i<8; i++) {
@@ -75,7 +80,8 @@ function makeChessBoardBoxDiv() {
                 textContent: `${j+1}${Math.abs(8-i)}`,  
                 title: `Box ${String.fromCharCode(64 + Math.abs(j+1))}${8-i}`,
                 dataAttributeName: 'coordinates',
-                dataAttributeValue: `${j}${Math.abs(7-i)}`
+                dataAttributeValue: `${j}${Math.abs(7-i)}`,
+                callBackFunction: chessBoardBoxClicked,
             }));
         }
     }
