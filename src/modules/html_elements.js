@@ -49,6 +49,15 @@ function makeControlsDiv() {
     main.appendChild(controlDiv);
 }
 
+function makeControlButton() {
+    const controlDiv = document.getElementById('contorls');
+    controlDiv.appendChild(makeButton({id: 'placeKnight', title: 'Place Knight Button', textContent: 'Place Knight'}));
+    controlDiv.appendChild(makeButton({id: 'randomlyPlaceKnight', title: 'Randomly Place Knight Button', textContent: 'Randomly Place Knight'}));
+    controlDiv.appendChild(makeButton({id: 'selectDestination', title: 'Select Destination Button', textContent: 'Select Destination'}));
+    controlDiv.appendChild(makeButton({id: 'startTravails', title: 'Start Travails Button', textContent: 'Start Travails'}));
+    controlDiv.appendChild(makeButton({id: 'clearBoard', title: 'Clear Board Button', textContent: 'Clear Board'}));
+}
+
 function makeChessBoardDiv() {
     const main = document.querySelector('main');
     const chessBoardDiv = make({id: 'chessBoard'});
