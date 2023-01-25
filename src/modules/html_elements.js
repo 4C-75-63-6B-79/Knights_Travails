@@ -35,6 +35,7 @@ function makeButton({id, classNames, textContent, title}) {
     classNames ? classNames.split(' ').forEach(ele => button.classList.add(ele)) : 'doNothing';
     textContent ? button.textContent = textContent : 'do Nothing';
     title ? button.setAttribute('title', title) : 'doNothing';
+    return button;
 }
 
 function makeTitleDiv() {
@@ -45,7 +46,7 @@ function makeTitleDiv() {
 
 function makeControlsDiv() {
     const main = document.querySelector('main');
-    const controlDiv = make({id: 'contorls'});
+    const controlDiv = makeDiv({id: 'contorls'});
     main.appendChild(controlDiv);
 }
 
@@ -60,7 +61,7 @@ function makeControlButton() {
 
 function makeChessBoardDiv() {
     const main = document.querySelector('main');
-    const chessBoardDiv = make({id: 'chessBoard'});
+    const chessBoardDiv = makeDiv({id: 'chessBoard'});
     main.appendChild(chessBoardDiv);
 }
 
@@ -71,6 +72,7 @@ function start() {
     makeTitleDiv();
     makeControlsDiv();
     makeChessBoardDiv();
+    makeControlButton()
 }
 
 export  { start }; 
