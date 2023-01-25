@@ -65,6 +65,22 @@ function makeChessBoardDiv() {
     main.appendChild(chessBoardDiv);
 }
 
+function makeChessBoardBoxDiv() {
+    const chessBoardDiv = document.getElementById('chessBoard');
+    for(let i=0; i<8; i++) {
+        for(let j=0; j<8; j++) {
+            chessBoardDiv.appendChild(makeDiv({
+                id: `box${j+1}${Math.abs(8-i)}`, 
+                classNames: `box ${(j + Math.abs(7-i)) % 2 === 0 ? 'black' : 'white'}`, 
+                textContent: `${j+1}${Math.abs(8-i)}`,  
+                title: `Box ${String.fromCharCode(64 + Math.abs(j+1))}${8-i}`,
+                dataAttributeName: 'coordinates',
+                dataAttributeValue: `${j}${Math.abs(7-i)}`
+            }));
+        }
+    }
+}
+
 function start() {
     makeHeader();
     makeMain();
@@ -72,7 +88,8 @@ function start() {
     makeTitleDiv();
     makeControlsDiv();
     makeChessBoardDiv();
-    makeControlButton()
+    makeControlButton();
+    makeChessBoardBoxDiv();
 }
 
 export  { start }; 
