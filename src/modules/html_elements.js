@@ -47,12 +47,12 @@ function makeTitleDiv() {
 
 function makeControlsDiv() {
     const main = document.querySelector('main');
-    const controlDiv = makeDiv({id: 'contorls'});
+    const controlDiv = makeDiv({id: 'controls'});
     main.appendChild(controlDiv);
 }
 
 function makeControlButton() {
-    const controlDiv = document.getElementById('contorls');
+    const controlDiv = document.getElementById('controls');
     controlDiv.appendChild(makeButton({id: 'placeKnight', title: 'Place Knight Button', textContent: 'Place Knight'}));
     controlDiv.appendChild(makeButton({id: 'randomlyPlaceKnight', title: 'Randomly Place Knight Button', textContent: 'Randomly Place Knight'}));
     controlDiv.appendChild(makeButton({id: 'selectDestination', title: 'Select Destination Button', textContent: 'Select Destination'}));
