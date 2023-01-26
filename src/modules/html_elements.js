@@ -102,6 +102,20 @@ function makeChessBoardBoxDiv() {
     }
 }
 
+function updateChessBoardBoxClassStart(boxAttribute) {
+    const boxWithClassName = document.querySelector(`.box.start`);
+    boxWithClassName ? boxWithClassName.classList.remove('start') : 'doNothing' ;
+    const box = document.querySelector(` div.box[data-coordinates = ${boxAttribute}] `);
+    box.classList.add('start');
+}
+
+function updateChessBoardBoxClassEnd(boxAttribute) {
+    const boxWithClassName = document.querySelector(`.box.end`);
+    boxWithClassName ? boxWithClassName.classList.remove('end') : 'doNothing' ;
+    const box = document.querySelector(` div.box[data-coordinates = ${boxAttribute}] `);
+    box.classList.add('end');
+}
+
 function start() {
     makeHeader();
     makeMain();
@@ -113,4 +127,4 @@ function start() {
     makeChessBoardBoxDiv();
 }
 
-export  { start, updateButtonStyle }; 
+export  { start, updateButtonStyle, updateChessBoardBoxClassStart, updateChessBoardBoxClassEnd }; 
