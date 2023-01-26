@@ -19,7 +19,15 @@ const chessBoard = (function() {
         visited[start.x][start.y] = true;
     }
 
+    const unInitialize = function() {
+        start = null;
+        destination = null;
+        queue = null;
+        visited = null;
+    }
+
     const findPath = function() {
+        if(!start && !destination && !queue) return;
         initialize();
         while(queue.length > 0) {
             const firstQueueNode = queue.shift();
@@ -41,9 +49,10 @@ const chessBoard = (function() {
     return{
         placeKnight,
         setDestination,
-        findPath
+        findPath,
+        unInitialize
     }
 })();
 
-const {placeKnight: placeKnight, setDestination: setDestination, findPath: findPath} = chessBoard;
-export {placeKnight, setDestination, findPath};
+const {placeKnight: placeKnight, setDestination: setDestination, findPath: findPath, unInitialize: unInitialize} = chessBoard;
+export {placeKnight, setDestination, findPath, unInitialize};
