@@ -65,7 +65,7 @@ function makeControlButton() {
 function updateButtonStyle(event) {
     const buttonWithOnPosition = document.querySelector('.onPosition');
     if(event) {
-        buttonWithOnPosition.classList.remove('onPosition');
+        buttonWithOnPosition ? buttonWithOnPosition.classList.remove('onPosition') : 'doNothing';
         event.target.classList.add('onPosition');
     } else {
         buttonWithOnPosition.classList.remove('onPosition');
