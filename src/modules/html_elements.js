@@ -106,14 +106,14 @@ function updateChessBoardBoxClassStart(boxAttribute) {
     const boxWithClassStart = document.querySelector(`.box.start`);
     boxWithClassStart ? boxWithClassStart.classList.remove('start') : 'doNothing' ;
     const box = document.querySelector(` div.box[data-coordinates = '${boxAttribute}']`);
-    box.classList.add('start');
+    box ? box.classList.add('start') : 'doNothing';
 }
 
 function updateChessBoardBoxClassEnd(boxAttribute) {
     const boxWithClassEnd = document.querySelector(`.box.end`);
     boxWithClassEnd ? boxWithClassEnd.classList.remove('end') : 'doNothing' ;
     const box = document.querySelector(` div.box[data-coordinates = '${boxAttribute}']`);
-    box.classList.add('end');
+    box ? box.classList.add('end') : 'doNothing';
 }
 
 function clearBoard() {
