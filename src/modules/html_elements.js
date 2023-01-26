@@ -79,7 +79,10 @@ function makeChessBoardDiv() {
 }
 
 function chessBoardBoxClicked(event) {
-    console.log(event.target);
+    const x = Number(event.target.getAttribute('data-coordinates').charAt(0));
+    const y = Number(event.target.getAttribute('data-coordinates').charAt(1));
+    knightPlacement([x, y]);
+    selectDestination([x, y]);
 }
 
 function makeChessBoardBoxDiv() {
