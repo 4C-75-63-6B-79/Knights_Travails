@@ -1,4 +1,4 @@
-import { knightPlacement, randomKnightPlacement, selectDestination, travails } from './html_connector_chess_board.js';
+import { knightPlacement, randomKnightPlacement, selectDestination, travails, clearBoard } from './html_connector_chess_board.js';
 
 function makeHeader() {
     const body = document.querySelector('body');
@@ -59,7 +59,7 @@ function makeControlButton() {
     controlDiv.appendChild(makeButton({id: 'randomlyPlaceKnight', title: 'Randomly Place Knight Button', textContent: 'Randomly Place Knight', callBackFunction: [randomKnightPlacement]}));
     controlDiv.appendChild(makeButton({id: 'selectDestination', title: 'Select Destination Button', textContent: 'Select Destination', callBackFunction: [selectDestination, updateButtonStyle]}));
     controlDiv.appendChild(makeButton({id: 'startTravails', title: 'Start Travails Button', textContent: 'Start Travails', callBackFunction: [travails]}));
-    controlDiv.appendChild(makeButton({id: 'clearBoard', title: 'Clear Board Button', textContent: 'Clear Board'}));
+    controlDiv.appendChild(makeButton({id: 'clearBoard', title: 'Clear Board Button', textContent: 'Clear Board', callBackFunction: [clearBoard]}));
 }
 
 function updateButtonStyle(event) {
@@ -68,7 +68,7 @@ function updateButtonStyle(event) {
         buttonWithOnPosition ? buttonWithOnPosition.classList.remove('onPosition') : 'doNothing';
         event.target.classList.add('onPosition');
     } else {
-        buttonWithOnPosition.classList.remove('onPosition');
+        buttonWithOnPosition ? buttonWithOnPosition.classList.remove('onPosition') : 'doNothing';
     }
 }
 
