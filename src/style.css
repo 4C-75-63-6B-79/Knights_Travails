@@ -57,6 +57,10 @@ button:hover {
     transform: scale(1.05);
 }
 
+.onPosition {
+    border: 2px solid gray;
+}
+
 #chessBoard {
     display: grid;
     grid-template-columns: repeat(8, minmax(15px, 75px));
