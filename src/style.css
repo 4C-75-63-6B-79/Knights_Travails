@@ -82,3 +82,11 @@ button:hover {
 .white {
     background-color: white;
 }
+
+.start {
+    background-color: skyblue;
+}
+
+.end {
+    background-color: limegreen;
+}
