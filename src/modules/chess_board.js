@@ -46,9 +46,51 @@ const chessBoard = (function() {
         return -1;
     }
 
-    function getPath(chessBoxNode) {
-        let node = chessBoxNode;
+    function getPath(destChessBoxNode) {
+        const moveEndPoints = getMoveEndPoints(destChessBoxNode);
         const pathCoordinates = [];
+        let start, end;
+        for(let i=0; i<moveEndPoints.length-1; i++) {
+            start = moveEndPoints[i];
+            end = moveEndPoints[i+1];
+            if(isXmoreThanY()) {
+                moveX();
+                moveY();
+            } else {
+                moveY();
+                moveX();
+            }
+        }
+        pathCoordinates.push(end);
+        function isXmoreThanY() {
+            return Math.abs(start[0] - end[0]) > Math.abs(start[1] - end[1]);
+        }
+
+        function moveX() {
+            let startPlaceholder = start[0];
+            let endPlaceholder = end[0];
+            const incrementValue = (endPlaceholder - startPlaceholder) / Math.abs(endPlaceholder - startPlaceholder);
+            while(startPlaceholder !== endPlaceholder) {
+                pathCoordinates.push([startPlaceholder, start[1]]);
+                startPlaceholder += incrementValue;
+            }
+        }
+
+        function moveY() {
+            let startPlaceholder = start[1];
+            let endPlaceholder = end[1];
+            const incrementValue = (endPlaceholder - startPlaceholder) / Math.abs(endPlaceholder - startPlaceholder);
+            while(startPlaceholder !== endPlaceholder) {
+                pathCoordinates.push([end[0], startPlaceholder]);
+                startPlaceholder += incrementValue;
+            }
+        }
+        return pathCoordinates;
+    }
+
+    function getMoveEndPoints(chessBoxNode) {
+        let node = chessBoxNode;
+        let pathCoordinates = [];
         while(node) {
             pathCoordinates.unshift([node.x, node.y]);
             node = node.parent;
