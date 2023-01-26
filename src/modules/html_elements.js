@@ -59,7 +59,7 @@ function makeControlButton() {
     controlDiv.appendChild(makeButton({id: 'randomlyPlaceKnight', title: 'Randomly Place Knight Button', textContent: 'Randomly Place Knight', callBackFunction: [randomKnightPlacement]}));
     controlDiv.appendChild(makeButton({id: 'selectDestination', title: 'Select Destination Button', textContent: 'Select Destination', callBackFunction: [selectDestination, updateButtonStyle]}));
     controlDiv.appendChild(makeButton({id: 'startTravails', title: 'Start Travails Button', textContent: 'Start Travails', callBackFunction: [travails]}));
-    controlDiv.appendChild(makeButton({id: 'clearBoard', title: 'Clear Board Button', textContent: 'Clear Board', callBackFunction: [reset, clearBoard]}));
+    controlDiv.appendChild(makeButton({id: 'clearBoard', title: 'Clear Board Button', textContent: 'Clear Board', callBackFunction: [reset, clearPath]}));
 }
 
 function updateButtonStyle(event) {
@@ -116,11 +116,11 @@ function updateChessBoardBoxClassEnd(boxAttribute) {
     box ? box.classList.add('end') : 'doNothing';
 }
 
-function clearBoard() {
-    const boxWithClassStart = document.querySelector(`.box.start`);
-    boxWithClassStart ? boxWithClassStart.classList.remove('start') : 'doNothing' ;
-    const boxWithClassEnd = document.querySelector(`.box.end`);
-    boxWithClassEnd ? boxWithClassEnd.classList.remove('end') : 'doNothing' ;
+function clearPath() {
+    // const boxWithClassStart = document.querySelector(`.box.start`);
+    // boxWithClassStart ? boxWithClassStart.classList.remove('start') : 'doNothing' ;
+    // const boxWithClassEnd = document.querySelector(`.box.end`);
+    // boxWithClassEnd ? boxWithClassEnd.classList.remove('end') : 'doNothing' ;
     const boxexWithClassPath = document.querySelectorAll('.box.path');
     boxexWithClassPath ? Array.from(boxexWithClassPath).forEach(box => box.classList.remove('path')): 'doNothing';
 }
@@ -136,4 +136,4 @@ function start() {
     makeChessBoardBoxDiv();
 }
 
-export  { start, updateButtonStyle, updateChessBoardBoxClassStart, updateChessBoardBoxClassEnd, clearBoard }; 
+export  { start, updateButtonStyle, updateChessBoardBoxClassStart, updateChessBoardBoxClassEnd, clearPath }; 
