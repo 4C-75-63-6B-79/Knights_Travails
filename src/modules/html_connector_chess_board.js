@@ -1,11 +1,12 @@
 import { setStart, setDestination, findPath, unInitialize } from './chess_board.js';
-import { updateButtonStyle } from './html_elements.js';
+import { updateButtonStyle, updateChessBoardBoxClassStart, updateChessBoardBoxClassEnd } from './html_elements.js';
 const htmlConnectToChessBoard = (function() {
 
     let toggleKnightPlacement = false, toggleSelectDestination = false;
 
     const knightPlacement = function(coord) {
         if(toggleKnightPlacement === true && Array.isArray(coord)) {
+            updateChessBoardBoxClassStart(coord[0] + '' + coord[1]);
             setStart(coord);
             toggleKnightPlacement = false;
             updateButtonStyle();
@@ -17,11 +18,14 @@ const htmlConnectToChessBoard = (function() {
 
     const randomKnightPlacement = function() {
         updateButtonStyle();
-        setStart([ Math.floor(Math.random() * 8), Math.floor(Math.random() * 8)]);
+        const [x, y] = [ Math.floor(Math.random() * 8), Math.floor(Math.random() * 8) ];
+        updateChessBoardBoxClassStart(x + '' + y);
+        setStart([x, y]);
     }
 
     const selectDestination = function(coord) {
         if(toggleSelectDestination === true && Array.isArray(coord)) {
+            updateChessBoardBoxClassEnd(coord[0] + '' + coord[1]);
             setDestination(coord);
             toggleSelectDestination = false;
             updateButtonStyle();
