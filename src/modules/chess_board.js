@@ -32,7 +32,7 @@ const chessBoard = (function() {
         while(queue.length > 0) {
             const firstQueueNode = queue.shift();
             if(firstQueueNode.equals(destination)) {
-                return firstQueueNode;
+                return getPath(firstQueueNode);
             }
             for(let i=0; i<8; i++) {
                 const newNode = new ChessBoxNode(firstQueueNode.x+dx[i], firstQueueNode.y+dy[i], null, firstQueueNode);
@@ -44,6 +44,16 @@ const chessBoard = (function() {
             }
         }
         return -1;
+    }
+
+    function getPath(chessBoxNode) {
+        let node = chessBoxNode;
+        const pathCoordinates = [];
+        while(node) {
+            pathCoordinates.unshift([node.x, node.y]);
+            node = node.parent;
+        }
+        return pathCoordinates;
     }
 
     return{
