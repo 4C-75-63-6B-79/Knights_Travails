@@ -40,7 +40,7 @@ const htmlConnectToChessBoard = (function() {
         console.log(findPath());
     }
 
-    const clearBoard = function() {
+    const reset = function() {
         toggleSelectDestination = false;
         toggleKnightPlacement = false;
         updateButtonStyle();
@@ -52,7 +52,7 @@ const htmlConnectToChessBoard = (function() {
         randomKnightPlacement,
         selectDestination,
         travails,
-        clearBoard,
+        reset,
     };
 })();
 
@@ -60,6 +60,6 @@ const { knightPlacement: knightPlacement,
         randomKnightPlacement: randomKnightPlacement, 
         selectDestination: selectDestination,
         travails: travails,
-        clearBoard: clearBoard } = htmlConnectToChessBoard;
+        reset: reset } = htmlConnectToChessBoard;
 
-export { knightPlacement, randomKnightPlacement, selectDestination, travails, clearBoard };
+export { knightPlacement, randomKnightPlacement, selectDestination, travails, reset };
