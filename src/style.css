@@ -87,6 +87,10 @@ button:hover {
     background-color: skyblue;
 }
 
+.path {
+    background-color: orange;
+}
+
 .end {
     background-color: limegreen;
 }
