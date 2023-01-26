@@ -1,3 +1,4 @@
+import { knightPlacement, randomKnightPlacement, selectDestination, travails } from './html_connector_chess_board.js';
 
 function makeHeader() {
     const body = document.querySelector('body');
@@ -20,7 +21,7 @@ function makeFooter() {
 function makeDiv({id, classNames, textContent, title, dataAttributeName, dataAttributeValue, callBackFunction}) {
     const div = document.createElement('div');
     id ? div.setAttribute('id', id) : 'doNothing';
-    classNames ? classNames.split(' ').forEach(ele => div.classList.add(ele)) : 'doNothing';
+    classNames ? classNames.split(' ').forEach(eleClass => div.classList.add(eleClass)) : 'doNothing';
     textContent ? div.textContent = textContent : 'doNothing';
     title ? div.setAttribute('title', title) : 'doNothing';
     dataAttributeName ? div.setAttribute(`data-${dataAttributeName}`, '') : 'doNothing';
@@ -29,13 +30,14 @@ function makeDiv({id, classNames, textContent, title, dataAttributeName, dataAtt
     return div;
 }
 
-function makeButton({id, classNames, textContent, title}) {
+function makeButton({id, classNames, textContent, title, callBackFunction}) {
     const button = document.createElement('button');
     button.setAttribute('type', 'button');
     id ? button.setAttribute('id', id) : 'doNothing';
-    classNames ? classNames.split(' ').forEach(ele => button.classList.add(ele)) : 'doNothing';
+    classNames ? classNames.split(' ').forEach(eleClass => button.classList.add(eleClass)) : 'doNothing';
     textContent ? button.textContent = textContent : 'do Nothing';
     title ? button.setAttribute('title', title) : 'doNothing';
+    callBackFunction ? callBackFunction.forEach(eleFunction => button.addEventListener('click', eleFunction)) : 'doNothing';
     return button;
 }
 
@@ -53,11 +55,21 @@ function makeControlsDiv() {
 
 function makeControlButton() {
     const controlDiv = document.getElementById('controls');
-    controlDiv.appendChild(makeButton({id: 'placeKnight', title: 'Place Knight Button', textContent: 'Place Knight'}));
-    controlDiv.appendChild(makeButton({id: 'randomlyPlaceKnight', title: 'Randomly Place Knight Button', textContent: 'Randomly Place Knight'}));
-    controlDiv.appendChild(makeButton({id: 'selectDestination', title: 'Select Destination Button', textContent: 'Select Destination'}));
-    controlDiv.appendChild(makeButton({id: 'startTravails', title: 'Start Travails Button', textContent: 'Start Travails'}));
+    controlDiv.appendChild(makeButton({id: 'placeKnight', title: 'Place Knight Button', textContent: 'Place Knight', callBackFunction: [knightPlacement, updateButtonStyle]}));
+    controlDiv.appendChild(makeButton({id: 'randomlyPlaceKnight', title: 'Randomly Place Knight Button', textContent: 'Randomly Place Knight', callBackFunction: [randomKnightPlacement]}));
+    controlDiv.appendChild(makeButton({id: 'selectDestination', title: 'Select Destination Button', textContent: 'Select Destination', callBackFunction: [selectDestination, updateButtonStyle]}));
+    controlDiv.appendChild(makeButton({id: 'startTravails', title: 'Start Travails Button', textContent: 'Start Travails', callBackFunction: [travails]}));
     controlDiv.appendChild(makeButton({id: 'clearBoard', title: 'Clear Board Button', textContent: 'Clear Board'}));
+}
+
+function updateButtonStyle(event) {
+    const buttonWithOnPosition = document.querySelector('.onPosition');
+    if(event) {
+        buttonWithOnPosition.classList.remove('onPosition');
+        event.target.classList.add('onPosition');
+    } else {
+        buttonWithOnPosition.classList.remove('onPosition');
+    }
 }
 
 function makeChessBoardDiv() {
