@@ -1,4 +1,4 @@
-import { knightPlacement, randomKnightPlacement, selectDestination, travails, clearBoard } from './html_connector_chess_board.js';
+import { knightPlacement, randomKnightPlacement, selectDestination, travails, reset } from './html_connector_chess_board.js';
 
 function makeHeader() {
     const body = document.querySelector('body');
@@ -59,7 +59,7 @@ function makeControlButton() {
     controlDiv.appendChild(makeButton({id: 'randomlyPlaceKnight', title: 'Randomly Place Knight Button', textContent: 'Randomly Place Knight', callBackFunction: [randomKnightPlacement]}));
     controlDiv.appendChild(makeButton({id: 'selectDestination', title: 'Select Destination Button', textContent: 'Select Destination', callBackFunction: [selectDestination, updateButtonStyle]}));
     controlDiv.appendChild(makeButton({id: 'startTravails', title: 'Start Travails Button', textContent: 'Start Travails', callBackFunction: [travails]}));
-    controlDiv.appendChild(makeButton({id: 'clearBoard', title: 'Clear Board Button', textContent: 'Clear Board', callBackFunction: [clearBoard]}));
+    controlDiv.appendChild(makeButton({id: 'clearBoard', title: 'Clear Board Button', textContent: 'Clear Board', callBackFunction: [reset, clearBoard]}));
 }
 
 function updateButtonStyle(event) {
@@ -103,17 +103,26 @@ function makeChessBoardBoxDiv() {
 }
 
 function updateChessBoardBoxClassStart(boxAttribute) {
-    const boxWithClassName = document.querySelector(`.box.start`);
-    boxWithClassName ? boxWithClassName.classList.remove('start') : 'doNothing' ;
-    const box = document.querySelector(` div.box[data-coordinates = '${boxAttribute}'] `);
+    const boxWithClassStart = document.querySelector(`.box.start`);
+    boxWithClassStart ? boxWithClassStart.classList.remove('start') : 'doNothing' ;
+    const box = document.querySelector(` div.box[data-coordinates = '${boxAttribute}']`);
     box.classList.add('start');
 }
 
 function updateChessBoardBoxClassEnd(boxAttribute) {
-    const boxWithClassName = document.querySelector(`.box.end`);
-    boxWithClassName ? boxWithClassName.classList.remove('end') : 'doNothing' ;
-    const box = document.querySelector(` div.box[data-coordinates = '${boxAttribute}'] `);
+    const boxWithClassEnd = document.querySelector(`.box.end`);
+    boxWithClassEnd ? boxWithClassEnd.classList.remove('end') : 'doNothing' ;
+    const box = document.querySelector(` div.box[data-coordinates = '${boxAttribute}']`);
     box.classList.add('end');
+}
+
+function clearBoard() {
+    const boxWithClassStart = document.querySelector(`.box.start`);
+    boxWithClassStart ? boxWithClassStart.classList.remove('start') : 'doNothing' ;
+    const boxWithClassEnd = document.querySelector(`.box.end`);
+    boxWithClassEnd ? boxWithClassEnd.classList.remove('end') : 'doNothing' ;
+    const boxexWithClassPath = document.querySelectorAll('.box.path');
+    boxexWithClassPath ? Array.from(boxexWithClassPath).forEach(box => box.classList.remove('path')): 'doNothing';
 }
 
 function start() {
@@ -127,4 +136,4 @@ function start() {
     makeChessBoardBoxDiv();
 }
 
-export  { start, updateButtonStyle, updateChessBoardBoxClassStart, updateChessBoardBoxClassEnd }; 
+export  { start, updateButtonStyle, updateChessBoardBoxClassStart, updateChessBoardBoxClassEnd, clearBoard }; 
