@@ -5,7 +5,7 @@ const chessBoard = (function() {
     const dy = [-1, -2, -2, -1, 1, 2, 2, 1];
     let start, destination, queue, visited;
 
-    const placeKnight = function(startCoord) {
+    const setStart = function(startCoord) {
         start = new ChessBoxNode(startCoord[0], startCoord[1], 0, null);
     }
 
@@ -47,12 +47,12 @@ const chessBoard = (function() {
     }
 
     return{
-        placeKnight,
+        setStart,
         setDestination,
         findPath,
         unInitialize
     }
 })();
 
-const {placeKnight: placeKnight, setDestination: setDestination, findPath: findPath, unInitialize: unInitialize} = chessBoard;
-export {placeKnight, setDestination, findPath, unInitialize};
+const {setStart: setStart, setDestination: setDestination, findPath: findPath, unInitialize: unInitialize} = chessBoard;
+export {setStart, setDestination, findPath, unInitialize};
