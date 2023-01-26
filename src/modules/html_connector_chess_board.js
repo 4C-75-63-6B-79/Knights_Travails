@@ -1,5 +1,5 @@
 import { setStart, setDestination, findPath, unInitialize } from './chess_board.js';
-import { updateButtonStyle, updateChessBoardBoxClassStart, updateChessBoardBoxClassEnd } from './html_elements.js';
+import { updateButtonStyle, updateChessBoardBoxClassStart, updateChessBoardBoxClassEnd, clearPath } from './html_elements.js';
 const htmlConnectToChessBoard = (function() {
 
     let toggleKnightPlacement = false, toggleSelectDestination = false;
@@ -45,6 +45,9 @@ const htmlConnectToChessBoard = (function() {
         toggleKnightPlacement = false;
         updateButtonStyle();
         unInitialize();
+        updateChessBoardBoxClassStart();
+        updateChessBoardBoxClassEnd();
+        clearPath()
     }
 
     return {
