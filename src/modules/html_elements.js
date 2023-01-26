@@ -80,7 +80,6 @@ function makeChessBoardDiv() {
 
 function chessBoardBoxClicked(event) {
     console.log(event.target);
-    updateButtonStyle();
 }
 
 function makeChessBoardBoxDiv() {
@@ -111,4 +110,4 @@ function start() {
     makeChessBoardBoxDiv();
 }
 
-export  { start }; 
+export  { start, updateButtonStyle }; 
