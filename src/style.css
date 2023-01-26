@@ -57,7 +57,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-.onPosition {
+button.onPosition {
     border: 2px solid gray;
 }
 
@@ -75,22 +75,22 @@ button:hover {
     border: 1px solid black;
 }
 
-.black {
+.box.black {
     background-color: #999;
 }
 
-.white {
+.box.white {
     background-color: white;
 }
 
-.start {
+.box.start {
     background-color: skyblue;
 }
 
-.path {
+.box.path {
     background-color: orange;
 }
 
-.end {
+.box.end {
     background-color: limegreen;
 }
