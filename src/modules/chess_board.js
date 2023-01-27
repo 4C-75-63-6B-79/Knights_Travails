@@ -48,41 +48,41 @@ const chessBoard = (function() {
 
     function getPath(destChessBoxNode) {
         const moveEndPoints = getMoveEndPoints(destChessBoxNode);
-        const pathCoordinates = [];
+        const pathCoordinates = [moveEndPoints[0]];
         let start, end;
         for(let i=0; i<moveEndPoints.length-1; i++) {
             start = moveEndPoints[i];
             end = moveEndPoints[i+1];
             if(isXmoreThanY()) {
-                moveX();
-                moveY();
+                moveX(2);
+                moveY(1);
             } else {
-                moveY();
-                moveX();
+                moveY(2);
+                moveX(1);
             }
         }
-        pathCoordinates.push(end);
+        // pathCoordinates.push(end);
         function isXmoreThanY() {
             return Math.abs(start[0] - end[0]) > Math.abs(start[1] - end[1]);
         }
 
-        function moveX() {
+        function moveX(numOfTimeToRun) {
             let startPlaceholder = start[0];
             let endPlaceholder = end[0];
             const incrementValue = (endPlaceholder - startPlaceholder) / Math.abs(endPlaceholder - startPlaceholder);
-            while(startPlaceholder !== endPlaceholder) {
-                pathCoordinates.push([startPlaceholder, start[1]]);
-                startPlaceholder += incrementValue;
+            while(numOfTimeToRun > 0) {
+                pathCoordinates.push([pathCoordinates.slice(-1)[0][0] + incrementValue, pathCoordinates.slice(-1)[0][1]]);
+                numOfTimeToRun -= 1;
             }
         }
 
-        function moveY() {
+        function moveY(numOfTimeToRun) {
             let startPlaceholder = start[1];
             let endPlaceholder = end[1];
             const incrementValue = (endPlaceholder - startPlaceholder) / Math.abs(endPlaceholder - startPlaceholder);
-            while(startPlaceholder !== endPlaceholder) {
-                pathCoordinates.push([end[0], startPlaceholder]);
-                startPlaceholder += incrementValue;
+            while(numOfTimeToRun > 0) {
+                pathCoordinates.push([pathCoordinates.slice(-1)[0][0], pathCoordinates.slice(-1)[0][1] + incrementValue]);
+                numOfTimeToRun -= 1;
             }
         }
         return pathCoordinates;
