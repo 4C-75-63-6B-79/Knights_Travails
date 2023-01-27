@@ -1,5 +1,6 @@
 import { setStart, setDestination, findPath, unInitialize } from './chess_board.js';
-import { updateButtonStyle, updateChessBoardBoxClassStart, updateChessBoardBoxClassEnd, clearPath } from './html_elements.js';
+import { updateButtonStyle, updateChessBoardBoxClassStart, updateChessBoardBoxClassPath, updateChessBoardBoxTextContent, updateChessBoardBoxClassEnd, clearPath } from './html_elements.js';
+
 const htmlConnectToChessBoard = (function() {
 
     let toggleKnightPlacement = false, toggleSelectDestination = false;
@@ -13,6 +14,7 @@ const htmlConnectToChessBoard = (function() {
         } else if(toggleKnightPlacement === false && !Array.isArray(coord)) {
             toggleKnightPlacement = true;
             toggleSelectDestination = false;
+            clearPath();
         }
     }
 
@@ -32,12 +34,18 @@ const htmlConnectToChessBoard = (function() {
         } else if(toggleSelectDestination === false && !Array.isArray(coord)) {
             toggleSelectDestination = true;
             toggleKnightPlacement = false;
+            clearPath();
         }
     }
 
     const travails = function() {
         updateButtonStyle();
-        console.log(findPath());
+        findPath().forEach((coord, i) => {
+            updateChessBoardBoxClassPath(coord[0] + "" + coord[1])
+            if(i % 3 === 0) {
+                updateChessBoardBoxTextContent(coord[0] + "" + coord[1], Math.floor(i / 3));
+            }
+        });
     }
 
     const reset = function() {
