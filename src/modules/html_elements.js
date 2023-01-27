@@ -128,7 +128,7 @@ function updateChessBoardBoxClassEnd(boxAttribute) {
 
 function clearPath() {
     const boxexWithClassPath = document.querySelectorAll('.box.path');
-    boxexWithClassPath ? Array.from(boxexWithClassPath).forEach(box => box.classList.remove('path')): 'doNothing';
+    boxexWithClassPath ? Array.from(boxexWithClassPath).forEach(box => {box.classList.remove('path'); box.textContent = '';}): 'doNothing';
 }
 
 function start() {
