@@ -87,10 +87,10 @@ button.onPosition {
     background-color: skyblue;
 }
 
-.box.path {
-    background-color: orange;
-}
-
 .box.end {
     background-color: limegreen;
+}
+
+.box.path {
+    background-color: orange;
 }
