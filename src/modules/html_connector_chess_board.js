@@ -20,6 +20,7 @@ const htmlConnectToChessBoard = (function() {
 
     const randomKnightPlacement = function() {
         updateButtonStyle();
+        clearPath();
         const [x, y] = [ Math.floor(Math.random() * 8), Math.floor(Math.random() * 8) ];
         updateChessBoardBoxClassStart(x + '' + y);
         setStart([x, y]);
