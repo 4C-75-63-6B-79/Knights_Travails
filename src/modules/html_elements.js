@@ -18,6 +18,16 @@ function makeFooter() {
     body.appendChild(footer);
 }
 
+function makeSourceCodeLinkDiv() {
+    const footer = document.querySelector('footer');
+    const div = makeDiv({id: 'sourceCodeLink', title: 'Source Code'});
+    const link = document.createElement('a');
+    link.setAttribute('href', 'https://github.com/4C-75-63-6B-79/Knights_Travails');
+    link.textContent = 'Source Code';
+    div.appendChild(link);
+    footer.appendChild(div);
+}
+
 function makeDiv({id, classNames, textContent, title, dataAttributeName, dataAttributeValue, callBackFunction}) {
     const div = document.createElement('div');
     id ? div.setAttribute('id', id) : 'doNothing';
@@ -140,6 +150,7 @@ function start() {
     makeChessBoardDiv();
     makeControlButton();
     makeChessBoardBoxDiv();
+    makeSourceCodeLinkDiv();
 }
 
 export  { start, updateButtonStyle, 
