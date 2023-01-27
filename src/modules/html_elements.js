@@ -109,6 +109,11 @@ function updateChessBoardBoxClassStart(boxAttribute) {
     box ? box.classList.add('start') : 'doNothing';
 }
 
+function updateChessBoardBoxClassPath(boxAttribute) {
+    const box = document.querySelector(` div.box[data-coordinates = '${boxAttribute}']`);
+    box ? box.classList.add('path') : 'doNothing';
+}
+
 function updateChessBoardBoxClassEnd(boxAttribute) {
     const boxWithClassEnd = document.querySelector(`.box.end`);
     boxWithClassEnd ? boxWithClassEnd.classList.remove('end') : 'doNothing' ;
@@ -117,10 +122,6 @@ function updateChessBoardBoxClassEnd(boxAttribute) {
 }
 
 function clearPath() {
-    // const boxWithClassStart = document.querySelector(`.box.start`);
-    // boxWithClassStart ? boxWithClassStart.classList.remove('start') : 'doNothing' ;
-    // const boxWithClassEnd = document.querySelector(`.box.end`);
-    // boxWithClassEnd ? boxWithClassEnd.classList.remove('end') : 'doNothing' ;
     const boxexWithClassPath = document.querySelectorAll('.box.path');
     boxexWithClassPath ? Array.from(boxexWithClassPath).forEach(box => box.classList.remove('path')): 'doNothing';
 }
@@ -136,4 +137,4 @@ function start() {
     makeChessBoardBoxDiv();
 }
 
-export  { start, updateButtonStyle, updateChessBoardBoxClassStart, updateChessBoardBoxClassEnd, clearPath }; 
+export  { start, updateButtonStyle, updateChessBoardBoxClassStart, updateChessBoardBoxClassPath, updateChessBoardBoxClassEnd, clearPath }; 
