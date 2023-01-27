@@ -27,7 +27,7 @@ const chessBoard = (function() {
     }
 
     const findPath = function() {
-        if(!start && !destination && !queue) return;
+        if(!start || !destination) return;
         initialize();
         while(queue.length > 0) {
             const firstQueueNode = queue.shift();
