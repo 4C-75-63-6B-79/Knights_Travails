@@ -40,12 +40,13 @@ const htmlConnectToChessBoard = (function() {
 
     const travails = function() {
         updateButtonStyle();
-        findPath().forEach((coord, i) => {
+        const path = findPath();
+        path ?  path.forEach((coord, i) => {
             updateChessBoardBoxClassPath(coord[0] + "" + coord[1])
             if(i % 3 === 0) {
                 updateChessBoardBoxTextContent(coord[0] + "" + coord[1], Math.floor(i / 3));
             }
-        });
+        }) : 'doNothing';
     }
 
     const reset = function() {
