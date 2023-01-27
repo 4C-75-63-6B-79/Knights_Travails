@@ -1,6 +1,6 @@
 # Knight_Travails
 
-# **[Knight Travails Link](https://4c-75-63-6b-79.github.io/Knights_Travails/)**
+### **[Knight Travails Link](https://4c-75-63-6b-79.github.io/Knights_Travails/)**
 
 ## Desciption
 This is my solution of the assignment **[Knight Travails](https://www.theodinproject.com/lessons/javascript-knights-travails)** given in the **The Odin Project**. To get a better understanding of how to solve the problem I used this [source](https://www.baeldung.com/cs/knights-shortest-path-chessboard). To make the interactive part I took the idea form **[top solution](https://github.com/Kiwasthal/Knight-travails)** of this assignment at that time.
